@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>پرداخت | زرین دوخت</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    transition: 0.3s;
+}
+
+body.dark {
+    background: #181818;
+    color: white;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+nav a,
+.dark-button {
+    color: white;
+    text-decoration: none;
+    background: #333;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.container {
+    max-width: 550px;
+    margin: 45px auto;
+    padding: 20px;
+}
+
+.payment-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+}
+
+body.dark .payment-box {
+    background: #242424;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.amount {
+    text-align: center;
+    background: #f0f0f0;
+    padding: 18px;
+    border-radius: 12px;
+    margin: 25px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+body.dark .amount {
+    background: #333;
+}
+
+label {
+    display: block;
+    margin-top: 18px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    font-size: 17px;
+    font-family: inherit;
+}
+
+body.dark input {
+    background: #333;
+    color: white;
+    border-color: #555;
+}
+
+.card-number {
+    direction: ltr;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.pay-button {
+    width: 100%;
+    margin-top: 25px;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.pay-button:hover {
+    background: #333;
+}
+
+.back {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    color: #555;
+    text-decoration: none;
+}
+
+body.dark .back {
+    color: #ddd;
+}
+
+.note {
+    margin-top: 20px;
+    padding: 12px;
+    background: #fff3cd;
+    color: #664d03;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+body.dark .note {
+    background: #3d351d;
+    color: #ffe69c;
+}
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 50px;
+}
+
+@media (max-width: 500px) {
+
+    header {
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .payment-box {
+        padding: 20px;
+    }
+
+    .card-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+
+<div class="logo">
+    👕 زرین دوخت
+</div>
+
+<nav>
+
+<a href="index.html">
+    🏠 خانه
+</a>
+
+<a href="cart.html">
+    🛒 سبد خرید
+</a>
+
+<button
+    class="dark-button"
+    id="darkButton"
+    onclick="toggleDarkMode()"
+>
+    🌙 حالت تیره
+</button>
+
+</nav>
+
+</header>
+
+
+<div class="container">
+
+<div class="payment-box">
+
+<h1>
+    💳 پرداخت سفارش
+</h1>
+
+
+<div class="amount">
+
+مبلغ قابل پرداخت:
+
+<br><br>
+
+<span id="amount">
+    ۰
+</span>
+
+تومان
+
+</div>
+
+
+<form id="paymentForm">
+
+
+<label>
+    شماره کارت
+</label>
+
+<input
+    type="text"
+    id="cardNumber"
+    class="card-number"
+    placeholder="0000 0000 0000 0000"
+    maxlength="19"
+    inputmode="numeric"
+    required
+>
+
+
+<label>
+    نام دارنده کارت
+</label>
+
+<input
+    type="text"
+    id="cardName"
+    placeholder="نام و نام خانوادگی"
+    required
+>
+
+
+<div class="card-row">
+
+<div>
+
+<label>
+    تاریخ انقضا
+</label>
+
+<input
+    type="text"
+    id="expiry"
+    placeholder="MM/YY"
+    maxlength="5"
+    inputmode="numeric"
+    required
+>
+
+</div>
+
+
+<div>
+
+<label>
+    CVV2
+</label><input
+    type="password"
+    id="cvv2"
+    placeholder="CVV2"
+    maxlength="4"
+    inputmode="numeric"
+    required
+>
+
+</div>
+
+</div>
+
+
+<label>
+    رمز پویا
+</label>
+
+<input
+    type="password"
+    id="otp"
+    placeholder="رمز پویا"
+    inputmode="numeric"
+    required
+>
+
+
+<button
+    type="submit"
+    class="pay-button"
+>
+    💳 پرداخت
+</button>
+
+
+</form>
+
+
+<div class="note">
+    ⚠️ این صفحه فعلاً نمایشی است و اطلاعات کارت
+    به هیچ سرور یا بانکی ارسال نمی‌شود.
+    برای پرداخت واقعی باید درگاه پرداخت معتبر
+    به سایت متصل شود.
+</div>
+
+
+<a
+    href="checkout.html"
+    class="back"
+>
+    ← برگشت به ثبت سفارش
+</a>
+
+
+</div>
+
+</div>
+
+
+<footer>
+
+فروشگاه لباس زرین دوخت
+
+<br><br>
+
+تمامی حقوق محفوظ است © ۲۰۲۶
+
+</footer>
+
+
+<script>
+
+
+function getCart() {
+
+    try {
+
+        const saved =
+            localStorage.getItem("cart");
+
+        if (!saved) {
+            return [];
+        }
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+function showAmount() {
+
+    const cart =
+        getCart();
+
+    let total = 0;
+
+
+    cart.forEach(function(item) {
+
+        const price =
+            Number(item.price) || 0;
+
+        const quantity =
+            Number(item.quantity) || 1;
+
+        total +=
+            price * quantity;
+
+    });
+
+
+    document.getElementById("amount")
+        .textContent =
+        total.toLocaleString("fa-IR");
+
+}
+
+
+document
+    .getElementById("paymentForm")
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+
+            alert(
+                "این نسخه فقط نمایشی است. برای پرداخت واقعی باید درگاه بانکی متصل شود."
+            );
+
+        }
+    );
+
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle(
+        "dark"
+    );
+
+
+    const isDark =
+        document.body.classList.contains(
+            "dark"
+        );
+
+
+    localStorage.setItem(
+        "darkMode",
+        isDark ? "on" : "off"
+    );
+
+
+    updateDarkButton();
+
+}
+
+
+function loadDarkMode() {
+
+    const mode =
+        localStorage.getItem(
+            "darkMode"
+        );
+
+
+    if (mode === "on") {
+
+        document.body.classList.add(
+            "dark"
+        );
+
+    }
+
+
+    updateDarkButton();
+
+}
+
+
+function updateDarkButton() {
+
+    const button =
+        document.getElementById(
+            "darkButton"
+        );
+
+
+    if (!button) {
+        return;
+    }
+
+
+    if (
+        document.body.classList.contains(
+            "dark"
+        )
+    ) {
+
+        button.textContent =
+            "☀️ حالت روشن";
+
+    } else {
+
+        button.textContent =
+            "🌙 حالت تیره";
+
+    }
+
+}
+
+
+showAmount();
+
+loadDarkMode();
+
+
+</script>
+
+
+</body>
+</html>

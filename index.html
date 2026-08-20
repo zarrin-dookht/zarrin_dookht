@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>زرین دوخت</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    transition: 0.3s;
+}
+
+body.dark {
+    background: #181818;
+    color: white;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+nav a,
+.dark-button {
+    color: white;
+    text-decoration: none;
+    background: #333;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+nav a:hover,
+.dark-button:hover {
+    background: #444;
+}
+
+/* شمارنده سبد خرید */
+#cartCount {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    margin-right: 5px;
+    background: #e53935;
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.hero {
+    background: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+body.dark .hero {
+    background: #222;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin: 0 0 15px;
+}
+
+.hero p {
+    color: #666;
+    font-size: 18px;
+}
+
+body.dark .hero p {
+    color: #bbb;
+}
+
+.search-box {
+    max-width: 600px;
+    margin: 30px auto 10px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 16px;
+    outline: none;
+}
+
+body.dark .search-box input {
+    background: #333;
+    color: white;
+    border-color: #555;
+}
+
+.section-title {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 30px;
+}
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 25px 20px;
+}
+
+.category-button {
+    border: none;
+    background: white;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+body.dark .category-button {
+    background: #333;
+    color: white;
+}
+
+.category-button.active {
+    background: #111;
+    color: white;
+}
+
+.products {
+    max-width: 1100px;
+    margin: 30px auto 60px;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.product {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+body.dark .product {
+    background: #242424;
+    color: white;
+}
+
+.product:hover {
+    transform: translateY(-6px);
+}
+
+.image-box {
+    position: relative;
+}
+
+.product img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.favorite-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.favorite-button.active {
+    color: red;
+}
+
+.product-info {
+    padding: 22px;
+    text-align: center;
+}
+
+.product-info h3 {
+    font-size: 23px;
+    margin: 5px 0 15px;
+}
+
+.price {
+    font-size: 21px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-button {
+    display: block;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 9px;
+}
+
+.no-result {
+    display: none;
+    text-align: center;
+    font-size: 20px;
+    color: #777;
+    margin: 40px;
+}
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+@media (max-width: 650px) {
+
+    header {
+        flex-direction: column;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .product img {
+        height: 360px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header><div class="logo">
+    👕 زرین دوخت
+</div>
+
+<nav>
+
+<a href="index.html">
+    🏠 خانه
+</a>
+
+<a href="favorites.html">
+    ❤️ علاقه‌مندی‌ها
+</a>
+
+<a href="cart.html">
+    🛒 سبد خرید
+    <span id="cartCount">0</span>
+</a>
+
+<button
+    class="dark-button"
+    id="darkButton"
+    onclick="toggleDarkMode()"
+>
+    🌙 حالت تیره
+</button>
+
+</nav>
+
+</header>
+
+
+<section class="hero">
+
+<h1>
+    به زرین دوخت خوش آمدید
+</h1>
+
+<p>
+    لباس‌های شیک و باکیفیت برای استایل شما
+</p>
+
+<div class="search-box">
+
+<input
+    type="text"
+    id="searchInput"
+    placeholder="🔍 جستجوی محصول..."
+    oninput="filterProducts()"
+>
+
+</div>
+
+</section>
+
+
+<h2 class="section-title">
+    محصولات ما
+</h2>
+
+
+<div class="categories">
+
+<button
+    class="category-button active"
+    onclick="setCategory('all', this)"
+>
+    همه
+</button>
+
+<button
+    class="category-button"
+    onclick="setCategory('homewear', this)"
+>
+    👚 لباس راحتی
+</button>
+
+</div>
+
+
+<main class="products">
+
+
+<!-- محصول ۱ -->
+
+<div
+    class="product"
+    data-name="تیشرت و شلوار راحتی با طرح رویای آبی"
+    data-category="homewear"
+>
+
+<div class="image-box">
+
+<img
+    src="image/Royaye-abi-front.jpg.jpeg"
+    alt="تیشرت و شلوار راحتی با طرح رویای آبی"
+>
+
+<button
+    class="favorite-button"
+    data-id="1"
+    onclick="toggleFavorite(1, this)"
+>
+    ♡
+</button>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+    تیشرت و شلوار راحتی با طرح رویای آبی
+</h3>
+
+<div class="price">
+    ۱,۲۰۰,۰۰۰ تومان
+</div>
+
+<a
+    class="product-button"
+    href="royaye-abi.html"
+>
+    مشاهده محصول
+</a>
+
+</div>
+
+</div>
+
+
+<!-- محصول ۲ -->
+
+<div
+    class="product"
+    data-name="تیشرت و شلوار راحتی با طرح دشت آرام"
+    data-category="homewear"
+>
+
+<div class="image-box">
+
+<img
+    src="image/Dasht-aram-front.jpg.jpeg"
+    alt="تیشرت و شلوار راحتی با طرح دشت آرام"
+>
+
+<button
+    class="favorite-button"
+    data-id="2"
+    onclick="toggleFavorite(2, this)"
+>
+    ♡
+</button>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+    تیشرت و شلوار راحتی با طرح دشت آرام
+</h3>
+
+<div class="price">
+    ۱,۲۰۰,۰۰۰ تومان
+</div>
+
+<a
+    class="product-button"
+    href="dasht-aram.html"
+>
+    مشاهده محصول
+</a>
+
+</div>
+
+</div>
+
+
+<!-- محصول ۳ -->
+
+<div
+    class="product"
+    data-name="تیشرت و شلوار راحتی با طرح بهار شکوفه ها"
+    data-category="homewear"
+>
+
+<div class="image-box">
+
+<img
+    src="image/Bahar-shekofe-front.jpg.jpeg"
+    alt="تیشرت و شلوار راحتی با طرح بهار شکوفه ها"
+>
+
+<button
+    class="favorite-button"
+    data-id="3"
+    onclick="toggleFavorite(3, this)"
+>
+    ♡
+</button>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+    تیشرت و شلوار راحتی با طرح بهار شکوفه ها
+</h3>
+
+<div class="price">
+    ۱,۲۰۰,۰۰۰ تومان
+</div>
+
+<a
+    class="product-button"
+    href="bahar-shekofe.html"
+>
+    مشاهده محصول
+</a>
+
+</div>
+
+</div>
+
+
+<!-- محصول ۴ -->
+
+<div
+    class="product"
+    data-name="تیشرت و شلوار راحتی با طرح باغ پریان"
+    data-category="homewear"
+>
+
+<div class="image-box">
+
+<img
+    src="image/Bag-paryan-front.jpg.jpeg"
+    alt="تیشرت و شلوار راحتی با طرح باغ پریان"
+>
+
+<button
+    class="favorite-button"
+    data-id="4"
+    onclick="toggleFavorite(4, this)"
+>
+    ♡
+</button>
+
+</div>
+
+<div class="product-info">
+
+<h3>
+    تیشرت و شلوار راحتی با طرح باغ پریان
+</h3>
+
+<div class="price">
+    ۱,۲۰۰,۰۰۰ تومان
+</div>
+
+<a
+    class="product-button"
+    href="bag-paryan.html"
+>
+    مشاهده محصول
+</a>
+
+</div>
+
+</div>
+
+
+</main>
+
+
+<div
+    id="noResult"
+    class="no-result"
+>
+    محصولی پیدا نشد 😕
+</div>
+
+
+<footer>
+
+فروشگاه لباس زرین دوخت
+
+<br><br>
+
+تمامی حقوق محفوظ است © ۲۰۲۶
+
+</footer>
+
+
+<script>
+
+/* دسته‌بندی */
+
+let currentCategory = "all";
+
+function setCategory(category, button) {
+
+    currentCategory = category;
+
+    document
+        .querySelectorAll(".category-button")
+        .forEach(function(btn) {
+
+            btn.classList.remove("active");
+
+        });
+
+    button.classList.add("active");
+
+    filterProducts();
+}
+
+
+/* جستجو */
+
+function filterProducts() {
+
+    const search =
+        document
+            .getElementById("searchInput")
+            .value
+            .trim()
+            .toLowerCase();const products =
+        document.querySelectorAll(".product");
+
+    const noResult =
+        document.getElementById("noResult");
+
+    let found = false;
+
+    products.forEach(function(product) {
+
+        const name =
+            product
+                .getAttribute("data-name")
+                .toLowerCase();
+
+        const category =
+            product
+                .getAttribute("data-category");
+
+        const matchesSearch =
+            name.includes(search);
+
+        const matchesCategory =
+            currentCategory === "all" ||
+            category === currentCategory;
+
+        if (
+            matchesSearch &&
+            matchesCategory
+        ) {
+
+            product.style.display = "";
+
+            found = true;
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+    noResult.style.display =
+        found ? "none" : "block";
+}
+
+
+/* علاقه‌مندی‌ها */
+
+function getFavorites() {
+
+    try {
+
+        const saved =
+            localStorage.getItem("favorites");
+
+        if (!saved) {
+            return [];
+        }
+
+        const data =
+            JSON.parse(saved);
+
+        return Array.isArray(data)
+            ? data
+            : [];
+
+    } catch (error) {
+
+        return [];
+
+    }
+}
+
+
+function toggleFavorite(id, button) {
+
+    let favorites =
+        getFavorites();
+
+    if (favorites.includes(id)) {
+
+        favorites =
+            favorites.filter(function(item) {
+
+                return item !== id;
+
+            });
+
+        button.classList.remove("active");
+
+        button.textContent = "♡";
+
+    } else {
+
+        favorites.push(id);
+
+        button.classList.add("active");
+
+        button.textContent = "♥";
+
+    }
+
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(favorites)
+    );
+}
+
+
+function loadFavorites() {
+
+    const favorites =
+        getFavorites();
+
+    document
+        .querySelectorAll(".favorite-button")
+        .forEach(function(button) {
+
+            const id =
+                Number(
+                    button.getAttribute("data-id")
+                );
+
+            if (favorites.includes(id)) {
+
+                button.classList.add("active");
+
+                button.textContent = "♥";
+
+            }
+
+        });
+}
+
+
+/* شمارنده سبد خرید */
+
+function updateCartCount() {
+
+    try {
+
+        const saved =
+            localStorage.getItem("cart");
+
+        const cart =
+            saved
+                ? JSON.parse(saved)
+                : [];
+
+        let count = 0;
+
+        if (Array.isArray(cart)) {
+
+            cart.forEach(function(item) {
+
+                count +=
+                    Number(item.quantity) || 1;
+
+            });
+
+        }
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        if (cartCount) {
+
+            cartCount.textContent = count;
+
+        }
+
+    } catch (error) {
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        if (cartCount) {
+
+            cartCount.textContent = "0";
+
+        }
+
+    }
+
+}
+
+
+/* حالت تیره */
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark");
+
+    const isDark =
+        document.body.classList.contains("dark");
+
+    localStorage.setItem(
+        "darkMode",
+        isDark ? "on" : "off"
+    );
+
+    updateDarkButton();
+}
+
+
+function loadDarkMode() {
+
+    const mode =
+        localStorage.getItem("darkMode");
+
+    if (mode === "on") {
+
+        document.body.classList.add("dark");
+
+    }
+
+    updateDarkButton();
+}
+
+
+function updateDarkButton() {
+
+    const button =
+        document.getElementById("darkButton");
+
+    if (!button) {
+        return;
+    }
+
+    if (
+        document.body.classList.contains("dark")
+    ) {
+
+        button.textContent =
+            "☀️ حالت روشن";
+
+    } else {
+
+        button.textContent =
+            "🌙 حالت تیره";
+
+    }
+
+}
+
+
+/* اجرای اولیه */
+
+loadFavorites();
+
+loadDarkMode();
+
+updateCartCount();
+
+</script>
+
+</body>
+</html>

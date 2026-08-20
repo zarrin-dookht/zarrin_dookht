@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دشت آرام | زرین دوخت</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    transition: 0.3s;
+}
+
+body.dark {
+    background: #181818;
+    color: white;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+nav a,
+.dark-button {
+    color: white;
+    text-decoration: none;
+    background: #333;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.product-page {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+}
+
+body.dark .product-page {
+    background: #242424;
+    color: white;
+}
+
+.images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.images img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.info h1 {
+    font-size: 32px;
+}
+
+.price {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.description {
+    color: #666;
+    line-height: 2;
+    font-size: 17px;
+}
+
+body.dark .description {
+    color: #ccc;
+}
+
+.buy-button,
+.favorite-button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.buy-button {
+    border: none;
+    background: #111;
+    color: white;
+    margin-top: 20px;
+}
+
+body.dark .buy-button {
+    background: white;
+    color: #111;
+}
+
+.favorite-button {
+    border: 1px solid #ddd;
+    background: white;
+    color: #222;
+    margin-top: 10px;
+}
+
+.favorite-button.active {
+    background: #111;
+    color: white;
+}
+
+body.dark .favorite-button {
+    background: #333;
+    color: white;
+    border-color: #555;
+}
+
+body.dark .favorite-button.active {
+    background: white;
+    color: #111;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 15px;
+    color: #555;
+    text-decoration: none;
+}
+
+body.dark .back {
+    color: #ddd;
+}
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+@media (max-width: 750px) {
+    header {
+        flex-direction: column;
+    }
+
+    .product-page {
+        grid-template-columns: 1fr;
+        margin: 20px;
+    }
+
+    .images img {
+        height: 350px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">👕 زرین دوخت</div>
+
+<nav>
+<a href="index.html">🏠 خانه</a>
+<a href="favorites.html">❤️ علاقه‌مندی‌ها</a>
+<a href="cart.html">🛒 سبد خرید</a>
+
+<button
+class="dark-button"
+id="darkButton"
+onclick="toggleDarkMode()"
+>
+🌙 حالت تیره
+</button>
+</nav>
+</header>
+
+<main class="product-page">
+
+<div class="images">
+<img
+src="image/Dasht-aram-front.jpg.jpeg"
+alt="دشت آرام - جلو"
+>
+
+<img
+src="image/Dasht-aram-back.jpg.jpeg"
+alt="دشت آرام - پشت"
+>
+</div>
+
+<div class="info">
+
+<h1>
+تیشرت و شلوار راحتی با طرح دشت آرام
+</h1>
+
+<div class="price">
+۱,۲۰۰,۰۰۰ تومان
+</div>
+
+<p class="description">
+🧵 جنس پارچه: تریکو پنبه فلامت
+<br>
+📏 سایزبندی: فری سایز
+<br>
+🚚 برای عزیزان سیرجانی سه شنبه ها ارسال رایگان داریم
+</p>
+
+<button
+class="buy-button"
+onclick="addToCart()"
+>
+🛒 افزودن به سبد خرید
+</button>
+
+<button
+class="favorite-button"
+id="favoriteButton"
+onclick="toggleFavorite()"
+>
+♡ افزودن به علاقه‌مندی‌ها
+</button>
+
+<a class="back" href="index.html">
+← برگشت به فروشگاه
+</a>
+
+</div>
+</main>
+
+<footer>
+فروشگاه لباس زرین دوخت
+<br><br>
+تمامی حقوق محفوظ است © ۲۰۲۶
+</footer>
+
+<script>
+
+const PRODUCT_ID = 2;function getData(key) {
+    try {
+        const saved = localStorage.getItem(key);
+        if (!saved) return [];
+        const data = JSON.parse(saved);
+        return Array.isArray(data) ? data : [];
+    } catch (error) {
+        return [];
+    }
+}
+
+function addToCart() {
+
+    let cart = getData("cart");
+
+    const product = {
+        id: PRODUCT_ID,
+        name: "تیشرت و شلوار راحتی با طرح دشت آرام",
+        price: 1200000,
+        image: "image/Dasht-aram-front.jpg.jpeg",
+        quantity: 1
+    };
+
+    const found = cart.find(item => item.id === PRODUCT_ID);
+
+    if (found) {
+        found.quantity =
+            (Number(found.quantity) || 0) + 1;
+    } else {
+        cart.push(product);
+    }
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    alert("دشت آرام به سبد خرید اضافه شد 🛒");
+
+    window.location.href = "cart.html";
+}
+
+function toggleFavorite() {
+
+    let favorites = getData("favorites");
+
+    const button =
+        document.getElementById("favoriteButton");
+
+    if (favorites.includes(PRODUCT_ID)) {
+
+        favorites = favorites.filter(
+            id => id !== PRODUCT_ID
+        );
+
+        button.classList.remove("active");
+        button.textContent =
+            "♡ افزودن به علاقه‌مندی‌ها";
+
+    } else {
+
+        favorites.push(PRODUCT_ID);
+
+        button.classList.add("active");
+        button.textContent =
+            "♥ حذف از علاقه‌مندی‌ها";
+    }
+
+    localStorage.setItem(
+        "favorites",
+        JSON.stringify(favorites)
+    );
+}
+
+function loadFavorite() {
+
+    const favorites = getData("favorites");
+
+    const button =
+        document.getElementById("favoriteButton");
+
+    if (favorites.includes(PRODUCT_ID)) {
+
+        button.classList.add("active");
+        button.textContent =
+            "♥ حذف از علاقه‌مندی‌ها";
+    }
+}
+
+function toggleDarkMode() {
+
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "darkMode",
+        document.body.classList.contains("dark")
+            ? "on"
+            : "off"
+    );
+
+    updateDarkButton();
+}
+
+function loadDarkMode() {
+
+    if (
+        localStorage.getItem("darkMode") === "on"
+    ) {
+        document.body.classList.add("dark");
+    }
+
+    updateDarkButton();
+}
+
+function updateDarkButton() {
+
+    const button =
+        document.getElementById("darkButton");
+
+    if (
+        document.body.classList.contains("dark")
+    ) {
+        button.textContent = "☀️ حالت روشن";
+    } else {
+        button.textContent = "🌙 حالت تیره";
+    }
+}
+
+loadFavorite();
+loadDarkMode();
+
+</script>
+
+</body>
+</html>

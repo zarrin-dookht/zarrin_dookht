@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    تیشرت مشکی | زرین دوخت
+</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    transition: 0.3s;
+}
+
+
+body.dark {
+    background: #181818;
+    color: white;
+}
+
+
+header {
+    background: #111;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+
+.header-links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+.header-links a,
+.dark-button {
+    color: white;
+    text-decoration: none;
+    background: #333;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+
+.product-page {
+    max-width: 1100px;
+    margin: 45px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    box-shadow:
+        0 5px 25px
+        rgba(0,0,0,0.08);
+
+    transition: 0.3s;
+}
+
+
+body.dark .product-page {
+    background: #242424;
+    color: white;
+}
+
+
+.images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+
+.images img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+
+.info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.info h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+
+.price {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+
+.description {
+    color: #666;
+    line-height: 2;
+    font-size: 17px;
+}
+
+
+body.dark .description {
+    color: #ccc;
+}
+
+
+.buy-button {
+    border: none;
+    background: #111;
+    color: white;
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+.buy-button:hover {
+    background: #333;
+}
+
+
+.back {
+    display: inline-block;
+    margin-top: 15px;
+    color: #555;
+    text-decoration: none;
+}
+
+
+body.dark .back {
+    color: #ddd;
+}
+
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+
+@media (max-width: 750px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+
+    .product-page {
+        grid-template-columns: 1fr;
+        margin: 20px;
+        padding: 15px;
+    }
+
+
+    .images {
+        grid-template-columns: 1fr 1fr;
+    }
+
+
+    .images img {
+        height: 350px;
+    }
+
+
+    .info {
+        padding: 15px;
+    }
+
+
+    .info h1 {
+        font-size: 29px;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .images img {
+        height: 280px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+
+<div class="logo">
+    👕 زرین دوخت
+</div>
+
+
+<div class="header-links">
+
+<a href="index.html">
+    🏠 خانه
+</a>
+
+
+<a href="cart.html">
+    🛒 سبد خرید
+</a>
+
+
+<button
+    class="dark-button"
+    id="darkButton"
+    onclick="toggleDarkMode()"
+>
+    🌙 حالت تیره
+</button>
+
+
+</div>
+
+
+</header>
+
+
+<main class="product-page">
+
+
+<div class="images">
+
+
+<img
+    src="image/T.shirt-front.jpg.jpeg"
+    alt="نمای جلوی تیشرت مشکی"
+>
+
+
+<img
+    src="image/T.shirt-back.jpg.jpeg"
+    alt="نمای پشت تیشرت مشکی"
+>
+
+
+</div>
+
+
+<div class="info">
+
+
+<h1>
+    تیشرت مشکی
+</h1>
+
+
+<div class="price">
+    ۵۰۰,۰۰۰ تومان
+</div>
+
+
+<p class="description">
+
+تیشرت مشکی با طراحی ساده و شیک،
+مناسب استفاده روزمره و استایل‌های مختلف.
+
+</p>
+
+
+<button
+    class="buy-button"
+    onclick="addToCart()"
+>
+    🛒 افزودن به سبد خرید
+</button>
+
+
+<a
+    class="back"
+    href="index.html"
+>
+    ← برگشت به فروشگاه
+</a>
+
+
+</div>
+
+
+</main>
+
+
+<footer>
+
+فروشگاه لباس زرین دوخت
+
+<br><br>
+
+تمامی حقوق محفوظ است © ۲۰۲۶
+
+</footer>
+
+
+<script>
+
+
+function addToCart() {
+
+
+    const product = {
+
+        id: 1,
+
+        name: "تیشرت مشکی",
+
+        price: 500000,
+
+        image:
+            "image/T.shirt-front.jpg.jpeg",
+
+        quantity: 1
+
+    };let cart = [];
+
+
+    try {
+
+
+        const saved =
+            localStorage.getItem("cart");
+
+
+        if (saved) {
+
+
+            const data =
+                JSON.parse(saved);
+
+
+            if (Array.isArray(data)) {
+
+                cart = data;
+
+            }
+
+        }
+
+
+    } catch (error) {
+
+        cart = [];
+
+    }
+
+
+    let found = false;
+
+
+    for (
+        let i = 0;
+        i < cart.length;
+        i++
+    ) {
+
+
+        if (
+            cart[i].id === product.id
+        ) {
+
+
+            cart[i].quantity =
+                (Number(
+                    cart[i].quantity
+                ) || 0) + 1;
+
+
+            found = true;
+
+            break;
+
+        }
+
+    }
+
+
+    if (!found) {
+
+        cart.push(product);
+
+    }
+
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+
+    alert(
+        "تیشرت مشکی به سبد خرید اضافه شد 🛒"
+    );
+
+
+    window.location.href =
+        "cart.html";
+
+}
+
+
+
+/* حالت تیره */
+
+function toggleDarkMode() {
+
+
+    document.body.classList.toggle(
+        "dark"
+    );
+
+
+    const isDark =
+        document.body.classList.contains(
+            "dark"
+        );
+
+
+    localStorage.setItem(
+        "darkMode",
+        isDark ? "on" : "off"
+    );
+
+
+    updateDarkButton();
+
+}
+
+
+
+function loadDarkMode() {
+
+
+    const mode =
+        localStorage.getItem(
+            "darkMode"
+        );
+
+
+    if (mode === "on") {
+
+        document.body.classList.add(
+            "dark"
+        );
+
+    }
+
+
+    updateDarkButton();
+
+}
+
+
+
+function updateDarkButton() {
+
+
+    const button =
+        document.getElementById(
+            "darkButton"
+        );
+
+
+    if (!button) {
+
+        return;
+
+    }
+
+
+    if (
+        document.body.classList.contains(
+            "dark"
+        )
+    ) {
+
+
+        button.textContent =
+            "☀️ حالت روشن";
+
+
+    } else {
+
+
+        button.textContent =
+            "🌙 حالت تیره";
+
+    }
+
+}
+
+
+
+loadDarkMode();
+
+
+</script>
+
+
+</body>
+
+</html>
