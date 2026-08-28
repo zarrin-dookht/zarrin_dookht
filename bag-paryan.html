@@ -371,23 +371,32 @@ function addToCart() {
         cart = [];
     }
 
-    let found = false;
+   let found = false;
 
-    for (let i = 0; i < cart.length; i++) {
+for (let i = 0; i < cart.length; i++) {
 
-        if (cart[i].id === product.id) {
+    if (cart[i].id === product.id) {
 
-            cart[i].quantity =
-                (Number(cart[i].quantity) || 0) + 1;
+        cart[i].quantity =
+            (Number(cart[i].quantity) || 0) + 1;
 
-            found = true;
-            break;
-        }
+        cart[i].image =
+            product.image;
+
+        cart[i].name =
+            product.name;
+
+        cart[i].price =
+            product.price;
+
+        found = true;
+        break;
     }
+}
 
-    if (!found) {
-        cart.push(product);
-    }
+if (!found) {
+    cart.push(product);
+}
 
     localStorage.setItem(
         "cart",
