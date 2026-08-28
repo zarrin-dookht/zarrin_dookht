@@ -334,12 +334,22 @@ function addToCart() {
 
     const found = cart.find(item => item.id === PRODUCT_ID);
 
-    if (found) {
-        found.quantity =
-            (Number(found.quantity) || 0) + 1;
-    } else {
-        cart.push(product);
-    }
+  if (found) {
+    found.quantity =
+        (Number(found.quantity) || 0) + 1;
+
+    found.image =
+        product.image;
+
+    found.name =
+        product.name;
+
+    found.price =
+        product.price;
+
+} else {
+    cart.push(product);
+}
 
     localStorage.setItem(
         "cart",
