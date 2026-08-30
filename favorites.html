@@ -3,166 +3,184 @@
 
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>علاقه‌مندی‌ها | زرین دوخت</title>
+<title>علاقه‌مندی‌ها | زرین دوخت</title>
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            color: #222;
-            transition: 0.3s;
-        }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+    transition: 0.3s;
+}
 
-        body.dark {
-            background: #181818;
-            color: white;
-        }
+body.dark {
+    background: #181818;
+    color: white;
+}
 
-        header {
-            background: #111;
-            color: white;
-            padding: 18px 7%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 15px;
-        }
+header {
+    background: #111;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
 
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-        }
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        nav {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
 
-        nav a,
-        .dark-button {
-            color: white;
-            text-decoration: none;
-            background: #333;
-            padding: 10px 14px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-        }
+nav a,
+.dark-button {
+    color: white;
+    text-decoration: none;
+    background: #333;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
 
-        h1 {
-            text-align: center;
-            margin: 45px 0 30px;
-        }
+h1 {
+    text-align: center;
+    margin: 45px 0 30px;
+}
 
-        .favorites {
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
+.favorites {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
 
-        .favorite-product {
-            background: white;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-        }
+.favorite-product {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
 
-        body.dark .favorite-product {
-            background: #242424;
-            color: white;
-        }
+body.dark .favorite-product {
+    background: #242424;
+    color: white;
+}
 
-        .favorite-product img {
-            width: 100%;
-            height: 350px;
-            object-fit: cover;
-            display: block;
-        }
+.favorite-product img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
 
-        .info {
-            padding: 22px;
-            text-align: center;
-        }
+.info {
+    padding: 22px;
+    text-align: center;
+}
 
-        .price {
-            font-size: 20px;
-            font-weight: bold;
-            margin: 15px 0;
-        }
+.info h2 {
+    margin-top: 0;
+}
 
-        .buttons {
-            display: flex;
-            gap: 10px;
-        }
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+}
 
-        .buttons a,
-        .buttons button {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            cursor: pointer;
-            font-size: 15px;
-            text-decoration: none;
-        }
+.buttons {
+    display: flex;
+    gap: 10px;
+}
 
-        .view {
-            background: #111;
-            color: white;
-        }
+.buttons a,
+.buttons button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    text-decoration: none;
+}
 
-        .remove {
-            background: #eee;
-            color: #222;
-        }
+.view {
+    background: #111;
+    color: white;
+}
 
-        .empty {
-            text-align: center;
-            padding: 70px 20px;
-            color: #777;
-            font-size: 20px;
-        }
+.remove {
+    background: #eee;
+    color: #222;
+}
 
-        body.dark .empty {
-            color: #bbb;
-        }
+.empty {
+    text-align: center;
+    padding: 70px 20px;
+    color: #777;
+    font-size: 20px;
+}
 
-        footer {
-            background: #111;
-            color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 60px;
-        }
+body.dark .empty {
+    color: #bbb;
+}
 
-        @media (max-width: 650px) {
+.empty a {
+    display: inline-block;
+    margin-top: 20px;
+    background: #111;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+}
 
-            header {
-                flex-direction: column;
-            }
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    margin-top: 60px;
+}
 
-            .favorites {
-                grid-template-columns: 1fr;
-            }
+@media (max-width: 650px) {
 
-        }
+    header {
+        flex-direction: column;
+    }
 
-    </style>
+    .favorites {
+        grid-template-columns: 1fr;
+    }
+
+    .favorite-product img {
+        height: 350px;
+    }
+
+}
+
+</style>
 
 </head>
 
@@ -222,7 +240,9 @@
 
     ❤️ هنوز محصولی به علاقه‌مندی‌ها اضافه نکرده‌ای.
 
-    <br><br><a href="index.html">
+    <br><br>
+
+    <a href="index.html">
         مشاهده محصولات
     </a>
 
@@ -247,18 +267,31 @@ const products = {
 
     1: {
         id: 1,
-        name: "تیشرت مشکی",
-        price: "۵۰۰,۰۰۰ تومان",
-        image: "image/T.shirt-front.jpg.jpeg",
-        link: "product.html"
+        name: "تیشرت و شلوار راحتی با طرح رویای آبی",
+        price: "۱,۱۹۰,۰۰۰ تومان",
+        image: "royaye-abi-front.jpg.jpeg",
+        link: "royaye-abi.html"
     },
 
     2: {
         id: 2,
-        name: "هودی سفید",
-        price: "۸۰۰,۰۰۰ تومان",
-        image: "image/hoodie-front.jpg.jpeg",
-        link: "hoodie.html"
+        name: "تیشرت و شلوار راحتی با طرح دشت آرام",
+        price: "۱,۱۹۰,۰۰۰ تومان",
+        image: "dasht-aram-front.Jpg.jpeg",
+        link: "dasht-aram.html"
+    },
+
+    3: {
+        id: 3,
+        name: "تیشرت و شلوار راحتی با طرح بهار شکوفه ها",
+        price: "۱,۱۹۰,۰۰۰ تومان",
+        image: "bahar-shekofe-front.jpg.jpeg",
+        link: "bahar-shekofe.html"4: {
+        id: 4,
+        name: "تیشرت و شلوار راحتی با طرح باغ پریان",
+        price: "۱,۱۹۰,۰۰۰ تومان",
+        image: "bag-paryan-front.jpg.jpeg",
+        link: "bag-paryan.html"
     }
 
 };
@@ -455,8 +488,6 @@ function removeFavorite(id) {
 }
 
 
-/* حالت تیره */
-
 function toggleDarkMode() {
 
     document.body.classList.toggle("dark");
@@ -495,6 +526,10 @@ function updateDarkButton() {
     const button =
         document.getElementById("darkButton");
 
+    if (!button) {
+        return;
+    }
+
     if (
         document.body.classList.contains("dark")
     ) {
@@ -512,7 +547,9 @@ function updateDarkButton() {
 }
 
 
-showFavorites();loadDarkMode();
+showFavorites();
+
+loadDarkMode();
 
 </script>
 
@@ -520,3 +557,4 @@ showFavorites();loadDarkMode();
 </body>
 
 </html>
+    },
